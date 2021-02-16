@@ -1,0 +1,158 @@
+
+body, h1{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#body{
+    position: relative;
+    background-color: #FFF;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    padding: 0 0 10rem 0;
+}
+
+/* FORM */
+
+#form-wrapper{
+    background-color: #bbf1fa;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 20rem;
+    width: 30rem;
+    margin: 3rem 0 0 0;
+    box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    border-radius: 15px;
+    background: linear-gradient(217deg, rgba(255, 91, 121, 0.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(255, 247, 0, 0.8), rgba(0,255,0,0) 33.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+}
+#meme-form{
+    background-color: #FFF;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    justify-content: center;
+    margin: 2rem;
+    box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    border-radius: 15px;
+}
+#meme-form h1{
+    position: relative;
+    display: flex;
+    padding: 0.5rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+}
+#image-input{
+    position: relative;
+    display: flex;
+    padding: 0.2rem;
+    width: 67%;
+    align-self: center;
+    margin: 0 0 0.5rem 0;
+    border-radius: 5px;
+}
+#top-text-input{
+    position: relative;
+    display: flex;
+    padding: 0.2rem;
+    width: 67%;
+    align-self: center;
+    margin: 0 0 0.5rem 0;
+    border-radius: 5px;
+}
+#bottom-text-input{
+    position: relative;
+    display: flex;
+    padding: 0.2rem;
+    width: 67%;
+    align-self: center;
+    margin: 0 0 0.5rem 0;
+    border-radius: 5px;
+}
+#submit-button{
+    color: rgb(4, 28, 23);
+    position: relative;
+    display: flex;
+    width: 5rem;
+    height: 1.5rem;
+    align-self: center;
+    box-shadow: 4px 4px 15px rgba(39, 192, 133, 0.1);
+    border-radius: 7px;
+    justify-content: center;
+    font-weight: bold;
+    background: linear-gradient(217deg, rgba(255, 91, 121, 0.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(255, 247, 0, 0.8), rgba(0,255,0,0) 33.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+    border: 2px solid rgba(255, 91, 121, 0.1);
+    cursor: pointer;
+    padding: 0.2rem 0 0 0;
+}
+
+
+/* MEME DISPLAY CARD */
+
+
+#meme-wrapper{
+    background-color: #FFF;
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60rem;
+    margin: 2rem 0 0rem 0;
+    box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    border-radius: 15px;
+    /* background: linear-gradient(217deg, rgba(255, 91, 121, 0.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(255, 247, 0, 0.8), rgba(0,255,0,0) 33.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%); */
+}
+.meme-image-wrapper{
+    position: relative;
+    display: flex;
+    margin: 1rem;
+}
+.meme-img{
+    position: relative;
+    width: 15rem; 
+}
+.top-text{
+    position: absolute;
+    top: 0.5rem;
+    text-align: center;
+    width: 100%;
+    color: #FFF;
+    font-weight: bold;
+
+}
+.bot-text{
+    position: absolute;
+    bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
+    color: #FFF;
+    font-weight: bold;
+}
+.del-button{
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    color: #FFF;
+    background: linear-gradient(217deg, rgba(255, 91, 121, 0.8), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(255, 247, 0, 0.8), rgba(0,255,0,0) 33.71%),
+    linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+    border: 2px solid #FFF;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    margin: 0.1rem;
+    border-radius: 5px;
+}

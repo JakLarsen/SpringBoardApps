@@ -1,0 +1,56 @@
+body{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #FFF;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+#body{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}   
+#content{
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    background-image: url("bg1sm.png");
+    background-size: (40rem);
+    height: 40rem;
+    width: 60rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+}
+#nav-container{
+
+}
+#logo{
+    background-image: url("logo1.png");
+    background-repeat: no-repeat;
+    height: 125px;
+    width: auto;
+    margin: 0.2rem;
+    border-radius: 0 0 25px 15px;
+    
+}
+#nav-item-container{
+
+}
+.nav-item{
+
+}
+#card-container{
+
+}
+#start-btn{
+
+}
+.card{
+
+}

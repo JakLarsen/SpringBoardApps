@@ -1,0 +1,280 @@
+                    /* BODY AND HIDDEN CHECKBOX */
+
+#darkmode-switch{
+    display: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(0,0,0,1)
+}
+.body{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #FFF;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+p{
+    margin: 0.5rem auto;
+}
+
+                    /* BACKGROUND CIRCLE */
+
+.main-circle{
+    position: absolute;
+    z-index: 1;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 100%;
+    background: linear-gradient(40deg, #eb596e,#ffe227 70%);
+    top: -20rem;
+    transform: translate(50% 50%);
+}
+
+
+                    /* APP CONTENT */
+
+
+/* TOGGLE CARD */
+
+.toggle-card{
+    position: relative;
+    z-index: 2;
+    background-color: inherit;
+    width: 15rem;
+    height: 15rem;
+    margin: 2rem 0.5rem 0 2rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    box-shadow: 0 4px 35px rgba(0,0,0,0.1);
+    border-radius: 40px;
+    font-weight: bold;
+}
+.small-circle{
+    position: relative;
+    z-index: 3;
+    background-color: purple;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(40deg, #eb596e,#ffe227 70%);
+    border-radius: 50px;
+    margin: 0.5rem auto;
+}
+.toggle-content, .todo-content{
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: auto;
+    text-align: center;
+    width: 75%;
+}
+.toggle-heading{
+    margin: 1rem 0;
+}
+
+#darkmodeLabel, .toggle {
+    height: 2rem;
+    border-radius: 100px;
+}
+#darkmodeLabel {
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    margin: 1rem 0 0 0;
+}
+.toggle {
+    position: absolute;
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,.15);
+    transition: transform .3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.names {
+    font-size: 90%;
+    font-weight: bolder;
+    width: 65%;
+    margin-left: 1.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+.dark {
+    padding: 0 0 0 3.5rem;
+    opacity: .5;
+}
+
+
+/* TODO CARD */
+
+
+.todo-card{
+    position: relative;
+    z-index: 2;
+    background-color: inherit; 
+    width: 20rem;
+    height: 30rem;
+    margin: 2rem 0 0 2rem;
+    box-shadow: 0 4px 35px rgba(0,0,0,0.1);
+    border-radius: 40px;
+    font-weight: bold;
+    padding: 1rem 0.5rem 0 0;
+}
+.todo-heading{
+    margin: 1rem 0;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+.crescent{
+    position: absolute;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 100%;
+    left: 0;
+    background: #FFF;
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform .6s cubic-bezier(0.645, 0.05, 0.355, 1);
+}
+.item-button-wrapper{
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.item{
+    position: relative;
+    font-size: 0.75rem;
+    text-align: left;
+    width: 100%;
+    cursor: auto;
+}
+.done-btn{
+    position: relative;
+    display: flex;
+    color: #FFF;
+    background: linear-gradient(40deg, #ffe227,#eb596e 55%);
+    opacity: 0.9;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    font-weight: bold;
+    font-size: 0.85rem;
+    align-content: center;
+    border-radius: 25px;
+    height: 1.75rem;
+    width: 6rem;
+    border: none;
+    margin: 0.3rem 0 0 0;
+    padding: 0.45rem 0 0 0.95rem;
+    cursor: pointer;
+    outline: none;
+}
+.new-todo-light{
+    margin: 0.5rem auto;
+    border: 2px solid #eb596e;
+    border-radius: 4px;
+}
+.btn-add-todo-light{
+    background: linear-gradient(40deg, #ffe227,#eb596e 55%);
+    color: #FFF;
+    margin: 0 0 1rem 0;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 4px 35px rgba(0,0,0,.1);
+    height: 1.75rem;
+    width: 8rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+}
+.btn-add-todo-light:hover{
+    background: linear-gradient(40deg, #eb596e,#ffe227 155%);
+    width:8.25rem;
+}
+.done-btn:hover{
+    background: linear-gradient(40deg, #eb596e,#ffe227 155%);
+    width: 6.25rem;
+}
+
+
+
+
+
+                    /* DARK MODE */
+
+.bodyDarkmode{
+    background-color:  #26242E;
+    color: white;
+}
+.toggleDarkmode{
+    transform: translateX(100%);
+    background-color: #34323D;
+}
+.lightDarkmode{
+    opacity: 1;
+}
+.darkDarkmode{
+    opacity: .5;
+}
+.crescentDarkmode{
+    transform: scale(1);
+    background: #26242E;
+}
+.smallCircleDarkmode{
+    background: linear-gradient(40deg, #6930c3, #80ffdb 70%);
+}
+.mainCircleDarkmode{
+
+    background: linear-gradient(40deg, #6930c3, #80ffdb 70%);
+}
+
+.newTodoDarkmode{
+    border: 2px solid #80ffdb;
+}
+.btn-add-todo-dark{
+    background: linear-gradient(40deg,#80ffdb, #6930c3 55%);
+}
+.done-btn-dark{
+    background: linear-gradient(40deg,#80ffdb, #6930c3 55%);
+}
+.done-btn-dark:hover{
+    background: linear-gradient(40deg, #6930c3,#80ffdb 155%);
+    width: 6.25rem;
+}
+.btn-add-todo-dark:hover{
+    background: linear-gradient(40deg, #6930c3,#80ffdb 155%);
+    width:8.25rem;
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    right: 2rem;
+    bottom: 1rem;
+    color: white;
+    font-size: 0.75rem;
+}
+.footer a {
+    color: inherit;
+}
+
+/* REMOVE FOOTER IN SCREENS */
+@media only screen and (max-width: 650px) {
+.footer{
+    display: none;
+}
+
+
+}
