@@ -5,6 +5,9 @@ const darkmodeToggle =  document.querySelector('#darkmode-switch');
 let { checked } = darkmodeToggle;
 
 const bodyClass = document.querySelector('.body');
+const todoContent = document.querySelector('.todo-content');
+const errDiv = document.querySelector('.err-div');
+const borderWrap = document.querySelector('.border-wrap');
 const toggleClass = document.querySelector('.toggle');
 const darkClass = document.querySelector('.dark');
 const lightClass = document.querySelector('.light');
@@ -27,6 +30,8 @@ function setDarkMode(){
     mainCircleClass.classList.add("mainCircleDarkmode");
     newTodoInput.classList.add("newTodoDarkmode");
     btnAddTodo.classList.add("btn-add-todo-dark");
+    errDiv.classList.add("err-div-dark");
+    borderWrap.classList.add("border-wrap-dark");
 
     for(let circle of smallCircleClasses){
         circle.classList.add("smallCircleDarkmode");
@@ -64,6 +69,8 @@ darkmodeToggle.addEventListener("click", function(e){
         mainCircleClass.classList.remove("mainCircleDarkmode");
         newTodoInput.classList.remove("newTodoDarkmode");
         btnAddTodo.classList.remove("btn-add-todo-dark");
+        errDiv.classList.remove("err-div-dark");
+        borderWrap.classList.remove("border-wrap-dark");
     
         for(let circle of smallCircleClasses){
             circle.classList.remove("smallCircleDarkmode");
@@ -117,6 +124,29 @@ function loadLocalItems(){
     }
 }
 
+//REMOVE ERROR DIV
+function removeErrorDiv(){
+    errDiv.style.display = 'none';
+    borderWrap.style.display = 'none';
+}
+
+//THROW ERROR DIV
+function throwErrDiv(){
+    errDiv.style.display = 'inline-block';
+    borderWrap.style.display = 'inline-block';
+    window.setTimeout(removeErrorDiv, 3000);
+}
+
+//GET CURRENT DATE
+function getCurrentDate(){
+    let currDate = new Date();
+    let dd = currDate.getDate();
+    let mo = currDate.getMonth();
+    let yr =  currDate.getFullYear();
+    let completionDate = mo+ '/' + dd + '/' + yr;
+    return completionDate;
+}
+
 //ADD NEW TODO FUNCTION
 function addNewTodo(){
    
@@ -125,31 +155,43 @@ function addNewTodo(){
     todoList.appendChild(newDiv);
 
     const newP = document.createElement('p');
-    newP.innerText = input.value;
-    newP.classList.add('item');
-    newDiv.appendChild(newP);
-    input.value='';
-
-    const newBtn = document.createElement('button');
-    newBtn.innerText = "DONE!";
-
-    if(localStorage.getItem('darkmodeEnabled') === "true"){
-        newBtn.classList.add('done-btn');
-        newBtn.classList.add('done-btn-dark');
-    } else{
-        newBtn.classList.add('done-btn');
+    todoInput = input.value
+    console.log(todoInput.length);
+    if(todoInput.length >= 20){
+        throwErrDiv();
     }
-    newDiv.appendChild(newBtn);
+    else{
+        newP.innerText = todoInput;
+        newP.classList.add('item');
+        newDiv.appendChild(newP);
+        input.value='';
 
-        //SAVE TODOITEMS IN LOCALSTORAGE
-    todoItems.push({taskId: newDiv.firstChild.innerText});
-    localStorage.setItem("todoItems", JSON.stringify(todoItems)); 
+        const newBtn = document.createElement('button');
+        newBtn.innerText = "DONE!";
+
+        if(localStorage.getItem('darkmodeEnabled') === "true"){
+            newBtn.classList.add('done-btn');
+            newBtn.classList.add('done-btn-dark');
+        } else{
+            newBtn.classList.add('done-btn');
+        }
+        newDiv.appendChild(newBtn);
+
+            //SAVE TODOITEMS IN LOCALSTORAGE
+        todoItems.push({taskId: newDiv.firstChild.innerText});
+        localStorage.setItem("todoItems", JSON.stringify(todoItems)); 
+    }
 }
 
 // REMOVE TODO FUNCTION
 function removeTodo(e){
     if(e.target.classList.contains('done-btn')){
-        e.target.parentElement.remove();
+        // e.target.parentElement.remove();
+
+
+        //STRIKETHROUGH WITH DATE INSTEAD
+        e.target.parentElement.classList.add('st');
+        e.target.innerText = `${getCurrentDate()}`;
    } 
 }
 
