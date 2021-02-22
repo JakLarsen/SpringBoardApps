@@ -141,7 +141,7 @@ function throwErrDiv(){
 function getCurrentDate(){
     let currDate = new Date();
     let dd = currDate.getDate();
-    let mo = currDate.getMonth();
+    let mo = currDate.getMonth() + 1;
     let yr =  currDate.getFullYear();
     let completionDate = mo+ '/' + dd + '/' + yr;
     return completionDate;

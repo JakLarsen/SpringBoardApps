@@ -187,17 +187,15 @@ p{
     display: flex;
     color: #FFF;
     background: linear-gradient(40deg, #ffe227,#eb596e 55%);
-    opacity: 0.9;
     box-shadow: 0 4px 20px rgba(0,0,0,.1);
     font-weight: bold;
     font-size: 0.85rem;
-    align-content: center;
+    justify-content: center;
+    align-items: center;
     border-radius: 25px;
     height: 1.75rem;
     width: 6rem;
     border: none;
-    margin: 0.3rem 0 0 0;
-    padding: 0.45rem 0 0 0.95rem;
     cursor: pointer;
     outline: none;
 }
