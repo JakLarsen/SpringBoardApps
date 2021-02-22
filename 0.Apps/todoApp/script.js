@@ -18,6 +18,8 @@ const mainCircleClass = document.querySelector('.main-circle');
 const newTodoInput = document.querySelector('.new-todo-light');
 const btnAddTodo = document.querySelector('.btn-add-todo-light');
 let doneBtns = document.querySelectorAll('.done-btn');
+let numberOfTodos = 0;
+let tooManyChars = "Sorry, inputs must be less than 20 characters."
 
 //SWITCH TO DARKMODE
 function setDarkMode(){
@@ -131,7 +133,8 @@ function removeErrorDiv(){
 }
 
 //THROW ERROR DIV
-function throwErrDiv(){
+function throwErrDiv(message){
+    errDiv.innerText = message;
     errDiv.style.display = 'inline-block';
     borderWrap.style.display = 'inline-block';
     window.setTimeout(removeErrorDiv, 3000);
@@ -149,7 +152,7 @@ function getCurrentDate(){
 
 //ADD NEW TODO FUNCTION
 function addNewTodo(){
-   
+
     const newDiv = document.createElement('div');
     newDiv.classList.add('item-button-wrapper');
     todoList.appendChild(newDiv);
@@ -158,7 +161,7 @@ function addNewTodo(){
     todoInput = input.value
     console.log(todoInput.length);
     if(todoInput.length >= 20){
-        throwErrDiv();
+        throwErrDiv(tooManyChars);
     }
     else{
         newP.innerText = todoInput;
@@ -200,24 +203,29 @@ function removeTodo(e){
 
 //ADD NEW TODO CALL, CHECKING FOR BLANK AND DUPLICATES
 form.addEventListener("submit", function(e){
+    numberOfTodos += 1;
+    let message = "";
+    let passesChecks = true;
+
     e.preventDefault();
-    var notDuplicateOrBlank = true;
 
     if(input.value.length === 0){
-        alert("I think you left it blank!");
-        notDuplicateOrBlank = false;
+        throwErrDiv("I think you left it blank!");
+        passesChecks = false;
     }
-    //elif
     for (let item of todoItems) {
         if(item.taskId === input.value){
-            alert("Looks like it might be a duplicate!");
-            notDuplicateOrBlank = false;
+            throwErrDiv("Looks like it might be a duplicate!");
+            passesChecks = false;
         } 
     }
-    if(notDuplicateOrBlank === true){
+    if (numberOfTodos > 7){
+        throwErrDiv("Look's like you've got enough on your plate already!");
+        passesChecks = false;
+    }
+    if(passesChecks === true){
         addNewTodo();
     }
-
 });
 
 //REMOVE TODO ITEM(ALSO REMOVED FROM LOCALSTORAGE) WITH EVENT DELEGATION
