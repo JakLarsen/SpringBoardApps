@@ -25,6 +25,9 @@ form.addEventListener("submit", function(e){
     if(imageLink.length === 0){
         alert("No image");
     }
+    //check for valid image extension in url
+    // if (!is_image(imageLink)){
+    // }
     else{
         createMeme(imageLink, topText, botText);
     }
@@ -66,3 +69,12 @@ memeContainer.addEventListener("click", function(e){
         e.target.parentElement.remove();
     }
 })
+
+
+
+//catch for no text
+//catch for not valid image address (can check if even a valid url)
+    //is the data that you are downloading an image - cehck javascript libraries
+//force text to wrap inside of image
+//force text limit to 2 lines
+//Long string and empty text - skype
