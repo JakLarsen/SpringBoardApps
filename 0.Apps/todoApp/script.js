@@ -19,7 +19,7 @@ const newTodoInput = document.querySelector('.new-todo-light');
 const btnAddTodo = document.querySelector('.btn-add-todo-light');
 let doneBtns = document.querySelectorAll('.done-btn');
 let numberOfTodos = 0;
-let tooManyChars = "Sorry, inputs must be less than 20 characters."
+let tooManyChars = "Must be less than 20 characters."
 
 //SWITCH TO DARKMODE
 function setDarkMode(){
@@ -220,7 +220,7 @@ form.addEventListener("submit", function(e){
         } 
     }
     if (numberOfTodos > 7){
-        throwErrDiv("Look's like you've got enough on your plate already!");
+        throwErrDiv("Too many todos!");
         passesChecks = false;
     }
     if(passesChecks === true){
@@ -247,3 +247,14 @@ todoList.addEventListener('click', function(e){
 
 loadLocalItems();
 
+//CURRENT TOFIX:
+
+//If you reload page, numberOfTodos resets to 0, but todos stay on page (fix = local storage set for numberOfTodos)
+//throwErrDiv is poorly placed/not allotted space,
+    //where it pushes todos down off of card while visible
+    //Fix: aesthetically, move the darkmode sun and content up to match To-do card
+        //shorten darkmode card
+        //move "Jake's TO-DO LIST up to match"
+        //This should give space for an error div between main todo header and todo form
+        //make error div smaller, shorter messages, less padding
+//Add delete functionality for todos after they are finished
