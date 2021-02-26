@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #FFF;
+}
+.body{
+    position: absolute;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+#banner{
+    position: relative;
+    display: flex;
+    margin: 0;
+    padding: 2rem;
+    justify-content: center;
+    font-size: 3rem;
+}
+#button-row{
+    position: relative;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+#search{
+    height: 2.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border-style: none;
+}
+#submit-btn{
+    height: 2.95rem;
+    font-size: 1rem;
+    margin: 0 0 0 .1rem;
+    background-color: #333;
+    color: #FFF;
+    border-radius: 5px;
+    border-style: none;
+}
+#submit-btn:hover{
+    cursor: pointer;
+}
+#clear{
+    height: 2.95rem;
+    font-size: 1rem;
+    margin: 0 0 0 0.35rem;
+    background-color: #d52f2f;
+    color: #FFF;
+    border-radius: 5px;
+    border-style: none;
+}
+#clear:hover{
+    cursor: pointer;
+}
+
+#gif-container{
+    position: relative;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 1rem 4rem;
+}
+#error-div{
+    position: relative;
+    display: inline-block;
+    height: 5rem;
+    width: 100%;
+    margin: 0.5rem;
+    background-color: red;
+}
+.gif{
+    position: relative;
+    display: flex;
+    max-width: 25rem;
+    padding: 0.5rem;
+}
