@@ -8,6 +8,9 @@
 
 const startButton = document.querySelector('#start-btn');
 let gameInProgress = false;
+let height = 6;
+let width = 7
+let playerTurn = 1;
 
 
 
@@ -58,7 +61,9 @@ class Game{
   }
 
 
-        //GAME CLASS FUNCTIONS
+
+                    //GAME CLASS FUNCTIONS
+
 
 
   //INITIALIZE BOARD ARRAY FILLED WITH 'NULL'
@@ -190,9 +195,9 @@ class Game{
       }
     }
 
+  //RECYCLES ERROR-DISPLAY CSS TO SHOW A PLAYER HAS WON
   createWinDiv(){
     let winDiv = document.createElement('div');
-    //recycles error-display css to show a player won using the error-div
     winDiv.id = 'error-display';
     if(!this.p1Turn){
         winDiv.innerText = "Player 1 wins!"
@@ -230,6 +235,12 @@ class Game{
     window.setTimeout(this.resetBoard.bind(this), 1200);
   }
 
+
+
+                    //HANDLERS
+
+
+
   //BOARD CLICK HANDLER - HANDLES PLACEMENT OF TOKEN
   handleC4Click(e){
     if(e.target.classList.contains('c4-sq') && !this.gameOver){
@@ -258,11 +269,16 @@ class Game{
 
 
 
-          //END GAME CLASS
+                    //END GAME CLASS
 
 
 
 } 
+
+
+
+                    //START BUTTON HANDLER
+
 
 
 
@@ -272,8 +288,8 @@ startButton.addEventListener('click', function(e){
   p2 = new Player(document.getElementById('p2-color').value);
 
   if(!gameInProgress){
-    //Games takes a rectangular height, width - restricted options: (6x7, 7x8, or 8x9);
-    new Game(p1, p2, 6,7);
+    //Games takes a rectangular height(row), width(cols) - restricted options: (6x7, 7x8, or 8x9);
+    new Game(p1, p2, height, width);
     gameInProgress = true;
   }
 });  

@@ -166,6 +166,15 @@ memeContainer.addEventListener("click", function(e){
 
 
 
+
+
+
+
+
+
+
+
+            
             //NOTES
 
 
