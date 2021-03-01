@@ -9,7 +9,7 @@
 const startButton = document.querySelector('#start-btn');
 let p1InputVal = document.getElementById('p1-color').value;
 let p2InputVal = document.getElementById('p2-color').value;
-let turn = 1;
+let turn = 0;
 
 let gameInProgress = false;
 let height = 6;
@@ -172,6 +172,7 @@ class Game{
       let player = 0;
       // If it's p1Turn, that means p2 just played and is the player being checked for win
       !this.p1Turn ? player = 1: player = 2;
+
       const _win = cells =>
         cells.every(
           ([y, x]) =>
@@ -214,6 +215,16 @@ class Game{
     window.setTimeout(this.removeErrorDiv.bind(this), 1200);
   }
 
+  //RECYCLES ERROR-DISPLAY CSS TO SHOW PLAYER TIE
+  createTieDiv(){
+    let tieDiv = document.createElement('div');
+    tieDiv.id = 'error-display';
+    tieDiv.innerText = "TIE GAME"
+    this.startErrorContainer.appendChild(tieDiv);
+    this.errorDivPresent = true;  
+    window.setTimeout(this.removeErrorDiv.bind(this), 1200);
+  }
+
   //REMOVE PLAYER TOKEN CLASSES
   resetTokens(){
     for(let i = 0; i < this.board.length; i++){
@@ -247,19 +258,44 @@ class Game{
 
   //BOARD CLICK HANDLER - HANDLES PLACEMENT OF TOKEN
   handleC4Click(e){
+    //IF VALID SPACE AND GAME ISNT OVER
     if(e.target.classList.contains('c4-sq') && !this.gameOver){
       let sqId = e.target.id;
       let index = this.getPieceDropIndex(this.board, sqId);
+      
       //catching trying to play a piece in full column
       if(index === undefined){
         this.createErrorDiv();
       }
+      //PLACE PIECE
       else{
         this.placePiece(this.board, index);
+
+        //CHECK FOR WIN BASED ON 4 CELLS FROM BOTTOM TO TOP
+        //BETTER ALG COULD BE HAVE IDX OF PLACED PIECE (WHICH WE DO)
+          //-AND THEN CHECK ALL OPTIONS ONLY FOR THAT PIECE
+          //- HORIZONTAL CHECK EX: 
+          //[y,x][y,x+1][y,x+2][y,x+3]
+          //[y,x-1][y,x][y,x+1][y,x+2]
+          //[y,x-2][y,x-1][y,x][y,x+1]
+          //[y,x-3][y,x-2][y,x-1][y,x]
+          //16 max and average combination checks instead of like 168 max, averageturnsx4 average
+          //7 turn game = 112 checks, vs 4x1 + 4x2 + 4x3 + 4x4 + 4x5 + 4x6 + 4x7 112 checks
+          //Best case scenario at 7 turns is even, 8 turns = 128 < 144, getting exponentially worse
         let winnerFound = this.hasWon(this.board, index, sqId);
         if(winnerFound){
           this.gameOver = true;
           this.createWinDiv();
+          //RESET BOARD
+          this.resetTimer();
+        }
+
+        //CHECKING FOR TIE BY IDENTIFYING MAX TURNS, NON ALGORITHMIC
+        turn += 1;
+        console.log(turn)
+        if(turn == height * width){
+          this.gameOver = true;
+          this.createTieDiv();
           this.resetTimer();
         }
       }
@@ -313,6 +349,8 @@ startButton.addEventListener('click', function(e){
 
   p1 = new Player(p1InputVal);
   p2 = new Player(p2InputVal);
+
+  turn = 0;
 
   if(!gameInProgress){
     if(isValidInputs(p1InputVal, p2InputVal)){
