@@ -7,6 +7,10 @@
 
 
 const startButton = document.querySelector('#start-btn');
+let p1InputVal = document.getElementById('p1-color').value;
+let p2InputVal = document.getElementById('p2-color').value;
+let turn = 1;
+
 let gameInProgress = false;
 let height = 6;
 let width = 7
@@ -113,7 +117,7 @@ class Game{
         errorDiv.id = 'error-display';
         errorDiv.innerText = "Sorry, there are no spaces left in that column!"
         this.startErrorContainer.appendChild(errorDiv);
-        myGame.errorDivPresent = true; 
+        this.errorDivPresent = true; 
         window.setTimeout(this.removeErrorDiv.bind(this), 1200);
     }
   }
@@ -277,6 +281,26 @@ class Game{
 
 
 
+                    //VALIDATION ON COLOR INPUTS
+
+
+
+function isValidInputs(p1InputVal, p2InputVal){
+  //IF INPUT CONTAINS A NUMBER
+  if(/\d/.test(p1InputVal) == true || /\d/.test(p2InputVal) == true){
+    return false;
+  }
+  //IF INPUT CONTAINS SPACES
+  else if(p1InputVal.indexOf(' ') >= 0 || p2InputVal.indexOf(' ') >= 0){
+    return false;
+  }
+  //IF INPUT IS > 15 CHARS
+  else if(p1InputVal.length > 15 || p2InputVal.length > 15){
+    return false;
+  }
+  return true;
+}
+
                     //START BUTTON HANDLER
 
 
@@ -284,13 +308,22 @@ class Game{
 
 //START BUTTON CALLS TO RESET BOARD AND GAME AND INITIALIZE COLORS
 startButton.addEventListener('click', function(e){
-  p1 = new Player(document.getElementById('p1-color').value);
-  p2 = new Player(document.getElementById('p2-color').value);
+  p1InputVal = document.getElementById('p1-color').value;
+  p2InputVal = document.getElementById('p2-color').value;
+
+  p1 = new Player(p1InputVal);
+  p2 = new Player(p2InputVal);
 
   if(!gameInProgress){
-    //Games takes a rectangular height(row), width(cols) - restricted options: (6x7, 7x8, or 8x9);
-    new Game(p1, p2, height, width);
-    gameInProgress = true;
+    if(isValidInputs(p1InputVal, p2InputVal)){
+
+      //Games takes a rectangular height(row), width(cols) - restricted options: (6x7, 7x8, or 8x9);
+      new Game(p1, p2, height, width);
+      gameInProgress = true;
+    }
+    else{
+      alert("Not a valid input. Try a basic color, like red or blue!");
+    }
   }
 });  
 
@@ -321,6 +354,8 @@ startButton.addEventListener('click', function(e){
 
 
 //Validation of color input
+//Change p1Turn from boolean to playerTurn = 1 or 2
+
 //Animate dropdown of tokens  
 //Styling in general or trying out different types of aesthetics
 //Making it responsive and mobile first
