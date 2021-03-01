@@ -97,6 +97,14 @@ body, h1{
     padding: 0.2rem 0 0 0;
 }
 
+/* ERROR DIV */
+
+#err-div{
+    position: absolute;
+    display: flex;
+    color:red;
+    top: 23.5rem;
+}
 
 /* MEME DISPLAY CARD */
 
@@ -124,6 +132,8 @@ body, h1{
 .meme-img{
     position: relative;
     width: 15rem; 
+    height: 12rem;
+
 }
 .top-text{
     position: absolute;
@@ -132,7 +142,7 @@ body, h1{
     width: 100%;
     color: #FFF;
     font-weight: bold;
-
+    overflow-wrap: break-word;
 }
 .bot-text{
     position: absolute;
@@ -141,6 +151,7 @@ body, h1{
     width: 100%;
     color: #FFF;
     font-weight: bold;
+    overflow-wrap: break-word;
 }
 .del-button{
     position: absolute;
