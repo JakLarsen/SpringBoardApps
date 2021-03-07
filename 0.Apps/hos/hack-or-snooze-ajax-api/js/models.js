@@ -1,28 +1,19 @@
 "use strict";
 
+
+
 const BASE_URL = "https://hack-or-snooze-v3.herokuapp.com";
 
-//map of StoryMappings
-let storyMap = {};
-
-class StoryMapping {
-  constructor({storyId, favIdx, ownIdx}){
-    this.storyId = storyId;
-    this.favIdx = favIdx;
-    this.ownIdx = ownIdx;
-  }
-}
 
 
-/******************************************************************************
- * Story: a single story in the system
- */
+                    //STORY CLASS
+
+
+
 
 class Story {
 
-  /** Make instance of Story from data object about story:
-   *   - {title, author, url, username, storyId, createdAt}
-   */
+      //STORY INSTANCE
 
   constructor({ storyId, title, author, url, username, createdAt }) {
     this.storyId = storyId;
@@ -33,58 +24,51 @@ class Story {
     this.createdAt = createdAt;
   }
 
-  /** Parses hostname out of URL and returns it. */
-
+  //GOING TO DELETE? - Story.url is the same thing? 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
     let hostname = this.url;
     return hostname;
   }
 }
 
-/******************************************************************************
- * List of Story instances: used by UI to show story lists in DOM.
- */
+
+
+                    //STORYLIST CLASS
+
+
 
 class StoryList {
   constructor(stories) {
     this.stories = stories;
   }
 
-  /** Generate a new StoryList. It:
-   *
-   *  - calls the API
-   *  - builds an array of Story instances
-   *  - makes a single StoryList instance out of that
-   *  - returns the StoryList instance.
-   */
-
+  /*
+    -Gets story data from API
+    -Creates a new Story instance for each
+    -Creates a single StoryList instance to hold them
+    -Returns this StoryList
+  */
   static async getStories() {
-    // Note presence of `static` keyword: this indicates that getStories is
-    //  **not** an instance method. Rather, it is a method that is called on the
-    //  class directly. Why doesn't it make sense for getStories to be an
-    //  instance method?
 
-    // query the /stories endpoint (no auth required)
+    //QUERY - /stories endpoint of the Hack or Snooze API
     const response = await axios({
       url: `${BASE_URL}/stories`,
       method: "GET",
     });
 
-    // turn plain old story objects from API into instances of Story class
+    //CREATE NEW STORY INSTANCE FOR EACH OF THE STORIES FROM API DATA
     const stories = response.data.stories.map(story => new Story(story));
 
-    // build an instance of our own class using the new array of stories
+    //CREATE A STORYLIST INSTANCE FOR THIS LIST OF STORIES
     return new StoryList(stories);
   }
 
-  /** Adds story data to API, makes a Story instance, adds it to story list.
-   * - user - the current instance of User who will post the story
-   * - obj of {title, author, url}
-   *
-   * Returns the new Story instance
-   */
-
+  /*
+  - POST (AUTH REQ)
+  - Takes a user with an auth token and 3 pieces of story Data: {title, author, and url}
+  - Posts it to the api /stories endpoint
+  - Creates a new Story instance from the data and returns it
+  */
   async addStory(user, newStory) {
     const token = user.loginToken;
     const storyData = await axios({
@@ -99,7 +83,6 @@ class StoryList {
         }
       }
     });
-    console.log(storyData);
     const ourStory = new Story(storyData.data.story);
     return ourStory;
   }
@@ -226,19 +209,6 @@ class User {
       console.error("loginViaStoredCredentials failed", err);
       return null;
     }
-  }
-
-  //add story to favorite array
-  addFavorite(story){
-    this.favorites.push(story);
-  }
-
-  //remove story from favorites using a {storyid: favoritesIDX} object mapping
-  removeFavorite(storyId){
-    //remove from favorites
-    // this.favorites.splice([storyFavIdxMap[storyId]], 1);
-    //remove from storyFavIdxMap
-    // delete storyFavIdxMap[storyId];
   }
 
 

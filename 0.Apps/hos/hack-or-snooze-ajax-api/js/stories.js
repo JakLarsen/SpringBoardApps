@@ -146,7 +146,6 @@ function addToOwnStories(story){
   console.log(currentUser.ownStories);
 }
 
-
 //WHEN STORY FORM SUBMITTED, GETS DATA FROM FORM, ADDS STORY, AND DISPLAYS IT ON PAGE
 async function submitNewStory(e){
   e.preventDefault();
@@ -217,7 +216,7 @@ async function handleFavorites(e){
     });
 
     //add target story to favorites list
-    currentUser.addFavorite(favStory);
+    addFavorite(favStory);
 
     //update STORYIDXMAP
     updateStoryIdxMap();
