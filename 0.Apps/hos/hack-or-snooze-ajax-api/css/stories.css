@@ -1,0 +1,91 @@
+/* Lists of stories */
+
+.stories-list {
+  margin: 20px 5px;
+}
+
+.stories-list > li {
+  display: flex;
+  flex-flow: row wrap;
+  height: 3rem;
+  align-items: center;
+  color: gray;
+  /* background-color: red; */
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+}
+
+#stories-loading-msg {
+  font-weight: bold;
+  font-size: 150%;
+  margin: 20px 30px;
+}
+
+
+/* Individual stories */
+
+.first-row{
+  display: flex;
+  width: 100%;
+  /* background-color: pink; */
+}
+.second-row{
+  display: flex;
+  /* background-color: aqua; */
+}
+.left-links{
+  /* background-color: pink; */
+  display: flex;
+  align-items: center;
+  width: 75%;
+}
+.right-links{
+  display: flex;
+  width: 25%;
+  justify-content: flex-end;
+  /* background-color: lemonchiffon; */
+}
+
+
+.story-link {
+  display: flex;
+  color: black;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.story-link:hover {
+  text-decoration: none;
+}
+
+.story-author {
+  display: flex;
+  align-self: center;
+  margin: 0 0.5rem 0 0;
+  /* background-color: blue; */
+}
+.delete{
+  display: flex;
+  align-self: center;
+  margin: 0 0.3rem 0 0;
+  /* background-color: yellow; */
+}
+.fa-heart{
+  display: flex;
+  margin: 0 0.5rem 0.5rem 0;
+
+}
+
+.story-user {
+  display: flex;
+  /* background-color: green; */
+}
+.story-hostname{
+  display: flex;
+  /* background-color: purple; */
+}
+
+
+.delete:hover, .fav:hover{
+  cursor: pointer;
+}
