@@ -1,6 +1,10 @@
 "use strict";
 
-// So we don't have to keep re-finding things on page, find DOM elements once:
+
+
+                    //MAIN DOM GLOBAL VARIABLES
+
+
 
 const $body = $("body");
 
@@ -29,11 +33,11 @@ const $favLink = $('#nav-fav');
 const $myStories = $('#nav-my-stories');
 
 
+
 /** To make it easier for individual components to show just themselves, this
  * is a useful function that hides pretty much everything on the page. After
  * calling this, individual components can re-show just what they want.
  */
-
 function hidePageComponents() {
   const components = [
     $allStoriesList,
@@ -44,7 +48,6 @@ function hidePageComponents() {
 }
 
 /** Overall function to kick off the app. */
-
 async function start() {
   console.debug("start");
 

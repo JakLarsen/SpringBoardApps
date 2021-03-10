@@ -24,7 +24,6 @@ class Story {
     this.createdAt = createdAt;
   }
 
-  //GOING TO DELETE? - Story.url is the same thing? 
   getHostName() {
     let hostname = this.url;
     return hostname;
