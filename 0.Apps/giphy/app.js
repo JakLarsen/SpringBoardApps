@@ -32,6 +32,7 @@ function clearGifs(){
 //THROW ERROR DIV IF:
     //Search input empty
     //More than 10 gifs are already being shown
+    //input too long
 // function throwErrDiv(){
 // }
 

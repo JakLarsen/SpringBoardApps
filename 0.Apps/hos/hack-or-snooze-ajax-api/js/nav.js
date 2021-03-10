@@ -30,9 +30,12 @@ function updateNavOnLogin() {
   $navUserProfile.text(`${currentUser.username}`).show();
 }
 
-// WHEN A USER CLICKS TO ADD A STORY, OPEN FORM TO DO SO
+// WHEN A USER CLICKS TO ADD A STORY, HIDE STORIES, OPEN FORM TO DO SO
 function navAddStory(evt){
-  console.debug('Attempted Add Story Click');
+  console.debug('navAddStory');
+  $allStoriesList.hide();
+  $ownStoriesList.hide();
+  $favStoriesList.hide();
   $storyForm.show();
 }
 $navAddStory.on('click', navAddStory);

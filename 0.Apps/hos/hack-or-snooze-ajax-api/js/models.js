@@ -84,6 +84,8 @@ class StoryList {
       }
     });
     const ourStory = new Story(storyData.data.story);
+
+    storyIdxMap[ourStory.storyId] = {};
     return ourStory;
   }
 
@@ -108,11 +110,11 @@ class User {
    */
 
   constructor({
-                username,
-                name,
-                createdAt,
-                favorites = [],
-                ownStories = []
+              username,
+              name,
+              createdAt,
+              favorites = [],
+              ownStories = []
               },
               token) {
     this.username = username;
